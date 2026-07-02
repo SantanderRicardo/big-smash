@@ -302,20 +302,19 @@ async function eliminarProducto(id) {
 
     } catch (error) {
 
-        Swal.fire({
+    console.error(error);
 
-            icon: "error",
+    Swal.fire({
 
-            title: "Error",
+        icon: "error",
 
-            text: error.message
+        title: "Error",
 
-        });
+        text: error.message
 
-    }
+    });
 
 }
-
 // ==============================
 // INICIAR
 // ==============================
