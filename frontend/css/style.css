@@ -1,70 +1,426 @@
-body{
-    background:#f4f6f9;
-    font-family:Arial, Helvetica, sans-serif;
+/*=========================================
+            BIG SMASH
+=========================================*/
+
+:root{
+
+    /* Fondo */
+
+    --bg-dark:#1C1C1C;
+
+    --bg-card:#2A2A2A;
+
+    --bg-card-hover:#343434;
+
+    /* Color principal */
+
+    --accent:#FF6B35;
+
+    --accent-hover:#E85A2A;
+
+    /* Texto */
+
+    --text-primary:#F4F4F2;
+
+    --text-secondary:#A0A0A0;
+
+    --text-muted:#6B6B6B;
+
+    /* Bordes */
+
+    --border:#3A3A3A;
+
+    --border-strong:#555555;
+
 }
 
+/*=========================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+/*=========================================*/
+
+body{
+
+    background:var(--bg-dark);
+
+    color:var(--text-primary);
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/*=========================================
+                NAVBAR
+=========================================*/
+
 .navbar{
-    box-shadow:0 2px 10px rgba(0,0,0,.2);
+
+    background:#141414 !important;
+
+    border-bottom:2px solid var(--accent);
+
+    box-shadow:0 4px 12px rgba(0,0,0,.35);
+
 }
 
 .navbar-brand{
+
+    color:var(--accent) !important;
+
     font-size:28px;
+
     font-weight:bold;
+
+    letter-spacing:1px;
+
 }
 
+/*=========================================*/
+
+.container{
+
+    margin-top:40px;
+
+}
+
+/*=========================================
+                TITULOS
+=========================================*/
+
+h1,
+h2,
+h3,
+h4{
+
+    color:var(--text-primary);
+
+    font-weight:bold;
+
+}
+
+p{
+
+    color:var(--text-secondary);
+
+}
+
+/*=========================================
+                TARJETAS
+=========================================*/
+
 .card{
-    border:none;
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
     border-radius:15px;
+
     transition:.3s;
+
     cursor:pointer;
+
+    color:var(--text-primary);
+
 }
 
 .card:hover{
-    transform:translateY(-8px);
+
+    background:var(--bg-card-hover);
+
+    border-color:var(--accent);
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+
 }
 
-.container{
-    margin-top:40px;
+.card h1{
+
+    font-size:60px;
+
 }
 
-h1,h2,h3,h4{
-    font-weight:bold;
+.card h3{
+
+    color:var(--accent);
+
 }
 
-table{
-    background:#fff;
-    border-radius:10px;
-    overflow:hidden;
+.card p{
+
+    color:var(--text-secondary);
+
 }
+
+/*=========================================
+                BOTONES
+=========================================*/
 
 .btn{
+
     border-radius:8px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
 }
+
+/* Principal */
+
+.btn-primary{
+
+    background:var(--accent);
+
+    color:#1C1C1C;
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--accent-hover);
+
+}
+
+/* Crear */
+
+.btn-success{
+
+    background:#1f8f61;
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:#17714d;
+
+}
+
+/* Eliminar */
+
+.btn-danger{
+
+    background:#d64045;
+
+    border:none;
+
+}
+
+.btn-danger:hover{
+
+    background:#b52d32;
+
+}
+
+/* Dashboard */
+
+.btn-dark{
+
+    background:#111;
+
+    border:1px solid var(--border);
+
+}
+
+.btn-dark:hover{
+
+    background:#000;
+
+}
+
+/* Editar */
+
+.btn-warning{
+
+    background:#d89b18;
+
+    color:white;
+
+    border:none;
+
+}
+
+.btn-warning:hover{
+
+    background:#b78312;
+
+}
+
+/*=========================================
+                FORMULARIOS
+=========================================*/
 
 .form-control,
 .form-select{
+
+    background:var(--bg-card-hover);
+
+    border:1px solid var(--border);
+
+    color:var(--text-primary);
+
     border-radius:8px;
+
 }
 
-td{
-    vertical-align:middle;
+.form-control:focus,
+.form-select:focus{
+
+    background:var(--bg-card-hover);
+
+    color:var(--text-primary);
+
+    border-color:var(--accent);
+
+    box-shadow:0 0 8px rgba(255,107,53,.30);
+
+}
+
+.form-control::placeholder{
+
+    color:var(--text-muted);
+
+}
+
+/*=========================================
+                  TABLAS
+=========================================*/
+
+table{
+
+    background:var(--bg-card);
+
+    color:var(--text-primary);
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+thead{
+
+    background:#141414;
+
+    color:var(--accent);
+
+}
+
+tbody tr{
+
+    border-color:var(--border);
+
+}
+
+tbody tr:hover{
+
+    background:#333;
+
 }
 
 th{
+
     text-align:center;
+
 }
 
 td{
+
     text-align:center;
+
+    vertical-align:middle;
+
 }
+
+/*=========================================
+                ACCIONES
+=========================================*/
 
 .acciones button{
-    margin:2px;
+
+    margin:3px;
+
 }
 
+/*=========================================
+                FOOTER
+=========================================*/
+
 .footer{
-    margin-top:50px;
+
+    margin-top:60px;
+
+    padding:20px;
+
     text-align:center;
-    color:#888;
-    font-size:14px;
+
+    color:var(--text-secondary);
+
+    border-top:1px solid var(--border);
+
+}
+
+/*=========================================
+            SCROLLBAR
+=========================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#1C1C1C;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--accent);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--accent-hover);
+
+}
+
+/*=========================================
+            RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+    .navbar-brand{
+
+        font-size:22px;
+
+    }
+
+    .card{
+
+        margin-bottom:20px;
+
+    }
+
 }
