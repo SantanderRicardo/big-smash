@@ -10,6 +10,13 @@ const crearPedido = async (req, res) => {
 
         let total = 0;
 
+        // Generar número de pedido
+        const cantidadPedidos = await Pedido.countDocuments();
+
+        const numeroPedido =
+            "PED-" + String(cantidadPedidos + 1).padStart(4, "0");
+
+        // Calcular total y descontar stock
         for (const item of req.body.productos) {
 
             const producto = await Producto.findById(item.producto);
@@ -39,6 +46,8 @@ const crearPedido = async (req, res) => {
         }
 
         const pedido = await Pedido.create({
+
+            numeroPedido: numeroPedido,
 
             cliente: req.body.cliente,
 
@@ -92,19 +101,26 @@ const obtenerPedidos = async (req, res) => {
 };
 
 // =========================
-// CAMBIAR ESTADO
+// ACTUALIZAR PEDIDO
 // =========================
 const actualizarPedido = async (req, res) => {
 
     try {
 
         const pedido = await Pedido.findByIdAndUpdate(
+
             req.params.id,
+
             req.body,
+
             {
+
                 new: true,
+
                 runValidators: true
+
             }
+
         );
 
         if (!pedido) {
@@ -158,9 +174,17 @@ const eliminarPedido = async (req, res) => {
 
 };
 
+// =========================
+// EXPORTAR
+// =========================
 module.exports = {
+
     crearPedido,
+
     obtenerPedidos,
+
     actualizarPedido,
+
     eliminarPedido
+
 };

@@ -71,9 +71,27 @@ async function cargarPedidos() {
 
         <tr>
 
-            <td>${pedido.cliente.nombre}</td>
+            <td>
 
-            <td>$${pedido.total}</td>
+                <span class="badge bg-dark">
+
+                    ${pedido.numeroPedido}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                ${pedido.cliente.nombre} ${pedido.cliente.apellido}
+
+            </td>
+
+            <td>
+
+                $${pedido.total}
+
+            </td>
 
             <td>
 
@@ -116,21 +134,21 @@ async function cargarPedidos() {
 // ==========================
 document
 .getElementById("formPedido")
-.addEventListener("submit", async (e)=>{
+.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const pedido={
+    const pedido = {
 
-        cliente:selectCliente.value,
+        cliente: selectCliente.value,
 
-        productos:[
+        productos: [
 
             {
 
-                producto:selectProducto.value,
+                producto: selectProducto.value,
 
-                cantidad:Number(
+                cantidad: Number(
 
                     document
                     .getElementById("cantidad")
@@ -144,43 +162,43 @@ document
 
         observaciones:
 
-        document
-        .getElementById("observaciones")
-        .value
+            document
+            .getElementById("observaciones")
+            .value
 
     };
 
-    const respuesta=await fetch(URL_PEDIDOS,{
+    const respuesta = await fetch(URL_PEDIDOS, {
 
-        method:"POST",
+        method: "POST",
 
-        headers:{
+        headers: {
 
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
 
         },
 
-        body:JSON.stringify(pedido)
+        body: JSON.stringify(pedido)
 
     });
 
-    if(respuesta.ok){
+    if (respuesta.ok) {
 
         Swal.fire({
 
-            icon:"success",
+            icon: "success",
 
-            title:"Pedido creado",
+            title: "Pedido creado",
 
-            timer:1500,
+            timer: 1500,
 
-            showConfirmButton:false
+            showConfirmButton: false
 
         });
 
         document
-        .getElementById("formPedido")
-        .reset();
+            .getElementById("formPedido")
+            .reset();
 
         cargarPedidos();
 
@@ -189,41 +207,41 @@ document
 });
 
 // ==========================
-// ELIMINAR
+// ELIMINAR PEDIDO
 // ==========================
-async function eliminarPedido(id){
+async function eliminarPedido(id) {
 
     const resultado = await Swal.fire({
 
-        title:"¿Eliminar pedido?",
+        title: "¿Eliminar pedido?",
 
-        icon:"warning",
+        icon: "warning",
 
-        showCancelButton:true,
+        showCancelButton: true,
 
-        confirmButtonText:"Eliminar",
+        confirmButtonText: "Eliminar",
 
-        cancelButtonText:"Cancelar"
+        cancelButtonText: "Cancelar"
 
     });
 
-    if(!resultado.isConfirmed) return;
+    if (!resultado.isConfirmed) return;
 
-    await fetch(`${URL_PEDIDOS}/${id}`,{
+    await fetch(`${URL_PEDIDOS}/${id}`, {
 
-        method:"DELETE"
+        method: "DELETE"
 
     });
 
     Swal.fire({
 
-        icon:"success",
+        icon: "success",
 
-        title:"Pedido eliminado",
+        title: "Pedido eliminado",
 
-        timer:1200,
+        timer: 1200,
 
-        showConfirmButton:false
+        showConfirmButton: false
 
     });
 
@@ -232,7 +250,5 @@ async function eliminarPedido(id){
 }
 
 cargarClientes();
-
 cargarProductos();
-
 cargarPedidos();
